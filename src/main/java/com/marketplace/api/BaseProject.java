@@ -46,5 +46,12 @@ public class BaseProject {
         this.deadline = deadline;
     }
 
-
+    @Override
+    public String toString() {
+        return "BaseProject{" +
+                "description='" + description + '\'' +
+                ", maxBudget=" + maxBudget +
+                ", deadline=" + deadline +
+                '}';
+    }
 }

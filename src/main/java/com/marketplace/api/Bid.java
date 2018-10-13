@@ -42,4 +42,12 @@ public class Bid implements Comparable<Bid> {
             return 1;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "buyerName='" + buyerName + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

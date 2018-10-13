@@ -26,30 +26,35 @@ public class HashMapProjectDAO implements ProjectDAO {
     public Integer createProject(BaseProject newProject) {
         Integer id = count.incrementAndGet();
         DateTime currentDate = new DateTime();
-        Project p = new Project(id,
+        Project project = new Project(id,
                 newProject.getDescription(),
                 newProject.getMaxBudget(),
                 currentDate,
                 newProject.getDeadline());
-        projectHashMap.put(id,p);
+        LOG.debug("Project to be saved:" + project.toString());
+        projectHashMap.put(id,project);
         LOG.debug("hashmap size: " + projectHashMap.size());
         return id;
     }
 
+    @Override
     public Project findProjectById(Integer id) {
         Project project = projectHashMap.get(id);
         return project;
     }
 
+    @Override
     public HashMap<Integer, Project> listProjects() {
         return projectHashMap;
     }
 
+    @Override
     public Project addBid(Integer projectId, Bid bid) {
-        Project p = projectHashMap.get(projectId);
-        SortedSet<Bid> b = p.getBids();
-        b.add(bid);
-        return p;
+        Project project = projectHashMap.get(projectId);
+        SortedSet<Bid> bids = project.getBids();
+        LOG.debug("bid to be added:" + project.toString());
+        bids.add(bid);
+        return project;
     }
 
     @Override

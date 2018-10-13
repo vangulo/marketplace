@@ -57,12 +57,25 @@ public class Project extends BaseProject {
         this.lowestBid = lowestBid;
     }
 
-
     public Bid getWinningBid() {
         return winningBid;
     }
 
     public void setWinningBid(Bid winningBid) {
         this.winningBid = winningBid;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", description=" + super.getDescription() +
+                ", maxBudget=" + super.getMaxBudget() +
+                ", deadline=" + super.getDeadline() +
+                ", created=" + created +
+                ", lowestBid=" + lowestBid +
+                ", winningBid=" + winningBid +
+                ", bids=" + bids +
+                '}';
     }
 }

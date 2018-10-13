@@ -1,11 +1,12 @@
+/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/api/BaseProject.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/MarketplaceApplication.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/core/ProjectService.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/resources/ProjectResource.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/api/Project.java
-/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/db/HashMapProjectDAO.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/health/DataSourceHealthCheck.java
+/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/core/Notification.java
+/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/dao/HashMapProjectDAO.java
+/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/dao/ProjectDAO.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/MarketplaceConfiguration.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/api/Bid.java
-/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/db/ProjectDAO.java
-/Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/api/NewProjectRequest.java
 /Users/virgilangulo/git/intuit/marketplace/src/main/java/com/marketplace/api/AutoBid.java

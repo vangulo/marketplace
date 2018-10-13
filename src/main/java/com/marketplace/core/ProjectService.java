@@ -32,9 +32,10 @@ public class ProjectService {
     }
 
     private void validateProjectId(Integer id, Project project) {
+        Notification notification = new Notification();
         if (project == null) {
-            throw new WebApplicationException(
-                    MessageFormat.format("projectId {0} not found.", id), Response.Status.NOT_FOUND);
+            notification.addError(MessageFormat.format("projectId {0} not found", id));
+            throw new WebApplicationException(notification.errorMessage(), Response.Status.NOT_FOUND);
         }
     }
 
@@ -46,12 +47,22 @@ public class ProjectService {
     }
 
     private void validateNewProject(BaseProject newProject) {
-        if (newProject.getMaxBudget() <= 0) {
-            throw new WebApplicationException("maxBudget must be greater than 0.", Response.Status.BAD_REQUEST);
-        }
+        Notification notification = new Notification();
 
-        if (isNotActive(newProject)) {
-            throw new WebApplicationException("Project deadline is in the past.", Response.Status.BAD_REQUEST);
+
+        if (newProject.getMaxBudget() <= 0) notification.addError("maxBudget must be greater than 0");
+
+//        if (newProject.getMaxBudget() <= 0) {
+//            throw new WebApplicationException("maxBudget must be greater than 0.", Response.Status.BAD_REQUEST);
+//        }
+
+
+        if (isNotActive(newProject)) notification.addError("Project deadline is in the past");
+//        if (isNotActive(newProject)) {
+//            throw new WebApplicationException("Project deadline is in the past.", Response.Status.BAD_REQUEST);
+//        }
+        if (notification.hasErrors()) {
+            throw new WebApplicationException(notification.errorMessage(), Response.Status.BAD_REQUEST);
         }
     }
 
@@ -70,17 +81,22 @@ public class ProjectService {
     }
 
     private void validateBid(Bid bid, Project project) {
+        Notification notification = new Notification();
+
         if (project.getLowestBid() != null && project.getLowestBid() <= bid.getPrice()){
-            throw new WebApplicationException(
-                    MessageFormat.format("Bid price is higher than current lowestPrice of {0}.", project.getLowestBid()), Response.Status.BAD_REQUEST);
+            notification.addError(MessageFormat.format("Bid price is higher than current lowestPrice of {0}", project.getLowestBid()));
         }
-        if (bid.getPrice() > project.getMaxBudget() ){
-            throw new WebApplicationException(
-                    MessageFormat.format("Bid price is higher than max budget of {0}.", project.getMaxBudget()), Response.Status.BAD_REQUEST);
+
+        if (bid.getPrice() > project.getMaxBudget()){
+            notification.addError(MessageFormat.format("Bid price is higher than max budget of {0}", project.getMaxBudget()));
         }
 
         if (isNotActive(project)) {
-            throw new WebApplicationException("Project deadline has passed, bids no longer being accepted.", Response.Status.BAD_REQUEST);
+            notification.addError("Project deadline has passed, bids no longer being accepted");
+        }
+
+        if (notification.hasErrors()) {
+            throw new IllegalArgumentException(notification.errorMessage());
         }
     }
 
