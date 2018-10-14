@@ -9,6 +9,9 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.text.MessageFormat;
 
+/*
+Placed all Validation here as a static functions to keep Project Service Class Readable
+ */
 public class Validation {
 
     public static void validateProjectId(Integer id, Project project) {

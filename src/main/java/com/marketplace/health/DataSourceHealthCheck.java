@@ -3,6 +3,11 @@ package com.marketplace.health;
 import com.codahale.metrics.health.HealthCheck;
 import com.marketplace.dao.ProjectDAO;
 
+
+/*
+Though not needed necessarily for a HashMap backed Application,
+I have it for if we wanted to add a persistent datastore such as a relational database
+ */
 public class DataSourceHealthCheck extends HealthCheck {
     private final ProjectDAO dao;
 

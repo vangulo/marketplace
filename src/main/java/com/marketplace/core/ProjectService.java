@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import static com.marketplace.core.Validation.*;
 
+/*
+All business logic is here
+ */
 public class ProjectService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProjectService.class);
@@ -41,9 +44,7 @@ public class ProjectService {
 
     public Project addBid(Integer projectId, Bid bid) {
         Project project = findProjectById(projectId);
-
         validateBid(bid, project);
-
         projectDAO.addBid(projectId, bid);
         projectDAO.setLowestBid(project, bid);
         return project;

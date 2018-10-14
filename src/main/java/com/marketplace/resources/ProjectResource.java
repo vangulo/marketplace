@@ -10,13 +10,14 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 
+/*
+Controller logic here to deal with only HTTP interactions
+ */
 @Path("/api/v1/projects")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -30,7 +31,6 @@ public class ProjectResource {
         this.projectService = projectService;
     }
 
-    //curl -X POST 'http://localhost:8080/api/v1/projects' -H 'Content-Type: application/json' --data '{"description": "bar1", "maxBudget": "1100.00", "deadline":"2014-01-01 23:28:56"}'
     @POST
     @ApiOperation(value="Creates a Project", notes="Returns the newly created project")
     @ApiResponses(value={

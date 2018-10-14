@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+This provides a way to return multiple messeges when an exception occurs
+provides a user more information with whats wrong with a request
+ */
 public class Notification {
     private List<Error> errors = new ArrayList<>();
 

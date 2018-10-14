@@ -83,6 +83,7 @@ public class IntegrationTest {
         assertThat(project.getId()).isNotNull();
         assertThat(project.getBids().first().getBuyerName()).isEqualTo(bid.getBuyerName());
         assertThat(project.getBids().first().getPrice()).isEqualTo(bid.getPrice());
+        assertThat(project.getLowestBid()).isEqualTo(bid.getPrice());
     }
 
 

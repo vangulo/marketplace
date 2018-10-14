@@ -11,11 +11,14 @@ import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/*
+Only actions related to interacting with HashMaps here.
+A similar class to this would be created for another implementation such as a sql db.
+ */
 public class HashMapProjectDAO implements ProjectDAO {
     private static final Logger LOG = LoggerFactory.getLogger(HashMapProjectDAO.class);
     private final HashMap<Integer, Project> projectHashMap;
     private static AtomicInteger count;
-
 
     public HashMapProjectDAO() {
         this.projectHashMap = new HashMap<>();

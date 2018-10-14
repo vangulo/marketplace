@@ -11,6 +11,9 @@ import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
+/*
+main method to start up application
+ */
 public class MarketplaceApplication extends Application<MarketplaceConfiguration> {
 
     public static void main(final String[] args) throws Exception {
