@@ -3,12 +3,16 @@ package com.marketplace.dao;
 import com.marketplace.api.BaseProject;
 import com.marketplace.api.Bid;
 import com.marketplace.api.Project;
-import org.joda.time.DateTime;
 
 import java.util.HashMap;
 
+/*
+Create a DAO interface so that data store can be easily changed
+ */
+
 public interface ProjectDAO {
-    Integer createProject(BaseProject newProject);
+
+    Project createProject(BaseProject newProject);
 
     Project findProjectById(Integer id);
 

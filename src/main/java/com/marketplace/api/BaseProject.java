@@ -2,7 +2,12 @@ package com.marketplace.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiParam;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 
 public class BaseProject {
 

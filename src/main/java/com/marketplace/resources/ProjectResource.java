@@ -10,6 +10,8 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -35,10 +37,9 @@ public class ProjectResource {
             @ApiResponse(code=400, message="maxBudget must be greater than 0"),
             @ApiResponse(code=400, message="Project deadline is in the past.")
     })
-    public Response createProject(@ApiParam(required = true) BaseProject baseProject){
-        Integer projectId = projectService.createProject(baseProject);
-        Project savedProject = projectService.findProjectById(projectId);
-        return Response.ok(savedProject).build();
+    public Response createProject(BaseProject baseProject){
+        Project project = projectService.createProject(baseProject);
+        return Response.ok(project).build();
     }
 
     @GET
@@ -67,8 +68,7 @@ public class ProjectResource {
             @ApiResponse(code=400, message="Project deadline has passed, bids no longer being accepted.")
     })
     public Response addBid(@PathParam("id") IntParam id, Bid bid){
-       Project project = projectService.addBid(id.get(), bid);
-        Response.ok(project);
+        Project project = projectService.addBid(id.get(), bid);
         return Response.ok(project).build();
     }
 }

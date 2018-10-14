@@ -23,7 +23,7 @@ public class HashMapProjectDAO implements ProjectDAO {
     }
 
     @Override
-    public Integer createProject(BaseProject newProject) {
+    public Project createProject(BaseProject newProject) {
         Integer id = count.incrementAndGet();
         DateTime currentDate = new DateTime();
         Project project = new Project(id,
@@ -34,7 +34,7 @@ public class HashMapProjectDAO implements ProjectDAO {
         LOG.debug("Project to be saved:" + project.toString());
         projectHashMap.put(id,project);
         LOG.debug("hashmap size: " + projectHashMap.size());
-        return id;
+        return project;
     }
 
     @Override

@@ -1,0 +1,8 @@
+swagger:
+  resourcePackage: com.marketplace.resources
+  scheme: http
+
+logging:
+  level: INFO
+  loggers:
+    com.marketplace: DEBUG
