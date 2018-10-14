@@ -2,7 +2,7 @@
 
 How to start the MarketPlace application
 ---
-
+NOTE: java 8 recommended
 1. Run `mvn clean install` to build your application
 1. Start application with `java -jar target/marketplace-1.0-SNAPSHOT.jar server config.yml`
 1. To check that your application is running enter url `http://localhost:8080`
@@ -12,6 +12,9 @@ Health Check
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
 
+Swagger Endpoint
+---
+`http://localhost:8080/swagger`
 
 Curl commands to test endpoints:
 ---
@@ -42,13 +45,12 @@ Add a bid to a project
 ```
 
 
+
 Design Choices
 ---
-
 Dropwizard: Quick easy to bootstrap and run
 Hashmap: simple, in memory
 Notifications for validations: nice to get all errors at once
 Service and DAO layers: for separation of concerns
 ProjectDAO interface: so that we can switch out the data store to another implementations i.e. database
-WebResponse object, add metadata good practice to place in a data field
-path has versions: if we want to change the interface of the REST API
+Path has versions: if we want to change the interface of the REST API

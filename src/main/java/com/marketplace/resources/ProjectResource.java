@@ -32,10 +32,11 @@ public class ProjectResource {
     }
 
     @POST
-    @ApiOperation(value="Creates a Project", notes="Returns the newly created project")
+    @ApiOperation(value="Creates a Project",
+            response = Project.class,
+            notes="Returns the newly created project")
     @ApiResponses(value={
-            @ApiResponse(code=400, message="maxBudget must be greater than 0"),
-            @ApiResponse(code=400, message="Project deadline is in the past.")
+            @ApiResponse(code=400, message="Request contains invalid parameters")
     })
     public Response createProject(BaseProject baseProject){
         Project project = projectService.createProject(baseProject);
@@ -43,15 +44,17 @@ public class ProjectResource {
     }
 
     @GET
+    @ApiOperation(value="For debugging purposes")
     public HashMap<Integer,Project> listProjects(){
         return projectService.listProjects();
     }
 
     @GET
     @Path("/{id}")
-    @ApiOperation(value="Retrieves a Project by Id")
+    @ApiOperation(value="Retrieves a Project by Id",
+            response = Project.class)
     @ApiResponses(value={
-            @ApiResponse(code=400, message="projectId not found.")
+            @ApiResponse(code=404, message="projectId not found.")
     })
     public Response findProjectById(@PathParam("id") IntParam id){
         Project project = projectService.findProjectById(id.get());
@@ -60,12 +63,11 @@ public class ProjectResource {
 
     @POST
     @Path("/{id}/bids")
-    @ApiOperation(value="Adds bid to project")
+    @ApiOperation(value="Adds bid to project",
+            response = Project.class)
     @ApiResponses(value={
-            @ApiResponse(code=400, message="projectId not found."),
-            @ApiResponse(code=400, message="Bid price is higher than current lowestPrice."),
-            @ApiResponse(code=400, message="Bid price is higher than max budget."),
-            @ApiResponse(code=400, message="Project deadline has passed, bids no longer being accepted.")
+            @ApiResponse(code=404, message="projectId not found."),
+            @ApiResponse(code=400, message="Request contains invalid parameters")
     })
     public Response addBid(@PathParam("id") IntParam id, Bid bid){
         Project project = projectService.addBid(id.get(), bid);

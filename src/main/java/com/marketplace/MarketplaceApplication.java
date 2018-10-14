@@ -14,10 +14,10 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 /*
 main method to start up application
  */
-public class MarketplaceApplication extends Application<MarketplaceConfiguration> {
+public class MarketPlaceApplication extends Application<MarketPlaceConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new MarketplaceApplication().run(args);
+        new MarketPlaceApplication().run(args);
     }
 
     @Override
@@ -26,17 +26,17 @@ public class MarketplaceApplication extends Application<MarketplaceConfiguration
     }
 
     @Override
-    public void initialize(final Bootstrap<MarketplaceConfiguration> bootstrap) {
-        bootstrap.addBundle(new SwaggerBundle<MarketplaceConfiguration>() {
+    public void initialize(final Bootstrap<MarketPlaceConfiguration> bootstrap) {
+        bootstrap.addBundle(new SwaggerBundle<MarketPlaceConfiguration>() {
             @Override
-            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(MarketplaceConfiguration configuration) {
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(MarketPlaceConfiguration configuration) {
                 return configuration.swaggerBundleConfiguration;
             }
         });
     }
 
     @Override
-    public void run(final MarketplaceConfiguration configuration,
+    public void run(final MarketPlaceConfiguration configuration,
                     final Environment environment) {
         final ProjectDAO projectDAO = new HashMapProjectDAO();
         final ProjectService projectService = new ProjectService(projectDAO);

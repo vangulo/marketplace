@@ -7,7 +7,6 @@ import org.joda.time.DateTime;
 
 
 public class BaseProject {
-
     @ApiParam(required = true)
     private String description;
     @ApiParam(required = true)

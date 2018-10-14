@@ -7,9 +7,7 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 /*
 Reads configuration file, in this case config.yml
  */
-public class MarketplaceConfiguration extends Configuration {
-
+public class MarketPlaceConfiguration extends Configuration {
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration swaggerBundleConfiguration;
-
 }

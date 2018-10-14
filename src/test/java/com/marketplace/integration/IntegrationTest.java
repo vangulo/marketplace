@@ -1,8 +1,7 @@
 package com.marketplace.integration;
 
-
-import com.marketplace.MarketplaceApplication;
-import com.marketplace.MarketplaceConfiguration;
+import com.marketplace.MarketPlaceApplication;
+import com.marketplace.MarketPlaceConfiguration;
 import com.marketplace.api.BaseProject;
 import com.marketplace.api.Bid;
 import com.marketplace.api.Project;
@@ -19,16 +18,13 @@ import javax.ws.rs.core.Response;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-
 public class IntegrationTest {
 
     private static final String CONFIG_PATH = ResourceHelpers.resourceFilePath("test-config.yml");
 
-
     @ClassRule
-    public static final DropwizardAppRule<MarketplaceConfiguration> RULE =
-            new DropwizardAppRule<>(MarketplaceApplication.class, CONFIG_PATH);
-
+    public static final DropwizardAppRule<MarketPlaceConfiguration> RULE =
+            new DropwizardAppRule<>(MarketPlaceApplication.class, CONFIG_PATH);
     @Test
     public void createProjectTest() {
         DateTime deadline = new DateTime(2019, 01, 01, 15, 28, 56);
@@ -36,14 +32,11 @@ public class IntegrationTest {
 
         final Response response  = RULE.client().target("http://localhost:8080/api/v1/projects")
                 .request().post(Entity.entity(baseProject, MediaType.APPLICATION_JSON_TYPE));
-
         Project project  = response.readEntity(Project.class);
-
         assertThat(project.getId()).isNotNull();
         assertThat(project.getDeadline()).isEqualTo(baseProject.getDeadline().toDateTime(DateTimeZone.UTC));
         assertThat(project.getMaxBudget()).isEqualTo(baseProject.getMaxBudget());
     }
-
 
     @Test
     public void getProjectTest() {
@@ -85,7 +78,4 @@ public class IntegrationTest {
         assertThat(project.getBids().first().getPrice()).isEqualTo(bid.getPrice());
         assertThat(project.getLowestBid()).isEqualTo(bid.getPrice());
     }
-
-
-
 }
